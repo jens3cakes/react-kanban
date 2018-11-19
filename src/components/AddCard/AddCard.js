@@ -40,7 +40,6 @@ class AddCard extends Component {
     this.setState({ name: "", task: "", status: "", type: "" })
   }
 
-
   render() {
     return (
       <div className="add-card-form">
@@ -54,17 +53,4 @@ class AddCard extends Component {
     )
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default AddCard;
