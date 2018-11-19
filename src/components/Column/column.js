@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from '../Card'
 
 const Column = (props) => {
-  const tasks = props.tasks.tasks;
-  const cards = tasks.filter((obj) => {
-    if (obj.status === props.title) {
-      return true
-    }
+  const {status,tasks } = props
+  const cards = tasks.filter((task) => {
+      return task.status === status 
   }).map((task) => {
-    return <Card name={task.name} task={task.task} status={task.status} />
+    return <Card  key={task._id} name={task.name} task={task.task} status={task.status} />
   })
 
   return (
     <div className='container'>
-      <h2>{props.title}</h2>
+      <h2>{status}</h2>
       <div>{cards}</div>
     </div>
   )

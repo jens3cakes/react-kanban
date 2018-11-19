@@ -33,7 +33,6 @@ class AddCard extends Component {
   }
 
   clickHandler() {
-    
     const { makeNewCard } = this.props;
     const { name, task, status, type } = this.state;
     makeNewCard({ name, task, status, type });

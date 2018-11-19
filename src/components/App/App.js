@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../App';
 import './App.css';
 import Board from '../Board'
-import Column from '../Column';
-import Card from '../Card';
 import AddCard from '../AddCard';
 
 
@@ -40,25 +37,21 @@ class App extends Component {
     this.makeNewCard = this.makeNewCard.bind(this);
 
   }
-makeNewCard({name, task, status, type}){
-  const {tasks} = this.state;
-  const _id = this.state.currentId;
-  const newCard = {_id, name, task, status, type};
-  this.setState({
-    currentId:_id + 1,
-    tasks: [...tasks, newCard]
-  })
-}
+  makeNewCard({ name, task, status, type }) {
+    const { tasks } = this.state;
+    const _id = this.state.currentId;
+    const newCard = { _id, name, task, status, type };
+    this.setState({
+      currentId: _id + 1,
+      tasks: [...tasks, newCard]
+    })
+  }
 
   render() {
     return (
       <div className='App'>
-        <Board title="" />
-        <Column title={'In queque'} tasks={this.state} />
-        <Column title={'In progress'} tasks={this.state} />
-        <Column title={'Done'} tasks={this.state} />
+        <Board tasks={this.state.tasks}/>
         <AddCard makeNewCard={this.makeNewCard} />
-
       </div>
 
     );

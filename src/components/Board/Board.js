@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Column from '../Column/'
-
- const Board = (props) => {
-  console.log('board',props)
+import {IN_PROGRESS, IN_QUEQUE, DONE} from '../constants';
 
 
+
+const Board = (props) => {
+  const tasks = props.tasks;
+  
   return (
+    <div className="App-header">
+      <h1>React Kanban Board</h1>
+      <Column status={IN_QUEQUE} tasks={tasks}/>
+      <Column status={IN_PROGRESS} tasks={tasks}/>
+      <Column status={DONE} tasks={tasks}/>
+    </div>
 
-    <header className="App-header">
-    <h1>React Kanban Board</h1>
-    </header>
-
+  
   )
-}
+  }
 export default Board;
