@@ -6,6 +6,7 @@ import {IN_PROGRESS, IN_QUEQUE, DONE} from '../constants';
 
 const Board = (props) => {
   const tasks = props.tasks;
+  console.log('board',props.tasks)
   
   return (
     <div className="App-header">
