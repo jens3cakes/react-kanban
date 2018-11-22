@@ -2,12 +2,12 @@ import React from 'react';
 import Card from '../Card'
 
 const Column = (props) => {
+  console.log('column',props)
   const { status, tasks } = props
-  console.log(props)
   const cards = tasks.filter((task) => {
     return task.status === status
   }).map((task) => {
-    return <Card key={task._id} name={task.name} task={task.task} status={task.status} />
+    return <Card key={task.id} name={task.name} task={task.task} status={task.status} />
   })
 
   return (

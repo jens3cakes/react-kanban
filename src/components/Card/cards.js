@@ -2,14 +2,16 @@ import React from 'react';
 
 
 const Card = (props) => {
-  const {name, task, status} = props;
+  const {name, task, status, type} = props;
     return (
       <div className='card'>
-        <ul>
-          <li>{name}</li>
-          <li>{task}</li>
-          <li>{status}</li>
-        </ul>
+        <div>
+          <br />
+          {name}<br />
+          {task}<br />
+          {status}<br />
+          {type}< br/>
+          </div>
       </div>
     )
 };
