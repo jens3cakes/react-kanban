@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Board from '../Board'
 import AddCard from '../AddCard/index';
 import { loadCards } from '../../cardAction/action';
+// import EditCard from '../EditCard/index'
 import axios from 'axios';
 import Column from '../Column';
 
@@ -13,18 +14,20 @@ class App extends Component {
   }
   componentDidMount() {
     console.log('cdm firing');
+console.log('comp did mount',this.props)
     this.props.loadCards()
   
   }
 
   render() {
-    console.log('render',this.props.cards)
+    console.log('render',this.props)
     return (
       
       <div className='App'>
         <Board tasks={this.props.cards} />
-        <Column tasks={this.props.cards}/>
+        {/* <Column tasks={this.props.cards}/> */}
         <AddCard />
+        {/* <EditCard /> */}
       </div>
 
     );

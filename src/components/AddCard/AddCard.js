@@ -6,50 +6,60 @@ class AddCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      task: "",
-      status: "",
-      type: ""
+      status_id: "",
+      assigned_to: "",
+      title: "",
+      body: "",
+      priority_id: "",
+      created_by: ""
     };
     this.changeHandler = this.changeHandler.bind(this);
     this.addNewCard = this.addNewCard.bind(this);
   }
   changeHandler(event) {
     switch (event.target.id) {
-      case "name":
-        return this.setState({ name: event.target.value });
+      case "assigned_to":
+        return this.setState({ assigned_to: event.target.value });
       case "task":
-        return this.setState({ task: event.target.value });
+        return this.setState({ title: event.target.value });
       case "status":
-        return this.setState({ status: event.target.value });
-      case "type":
-        return this.setState({ type: event.target.value });
+        return this.setState({ status_id: event.target.value });
+      case "body":
+        return this.setState({ body: event.target.value });
+      case "created_by":
+        return this.setState({ created_by: event.target.value });
+      case "priority_id":
+        return this.setState({ priority_id: event.target.value });
       default:
         break;
     }
   }
   addNewCard(event) {
-    console.log('add',event)
+    console.log('add', event)
     event.preventDefault();
     const data = {
-      name: this.state.name,
-      task: this.state.task,
-      status: this.state.status,
-      type: this.state.type
+      status_id: this.state.status_id,
+      assigned_to: this.state.assigned_to,
+      task: this.state.title,
+      body: this.state.body,
+      priority_id: this.state.priority_id,
+      created_by: this.state.created_by
     }
-    console.log('add2',data)
+    console.log('add2', data)
     this.props.addCard(data)
   }
 
   render() {
-    const { name, task, status, type } = this.state;
+    const { assigned_to, task, status, body, priority_id, created_by } = this.state;
     return (
       <div className="add-card-form">
-        <input type='text' id="name" value={name} onChange={this.changeHandler} placeholder='name' />
+        <input type='text' id="assigned_to" value={assigned_to} onChange={this.changeHandler} placeholder='assigned to' />
         <input type='text' id="task" value={task} onChange={this.changeHandler} placeholder='task' />
         <input type='text' id="status" value={status}
           onChange={this.changeHandler} placeholder='status' />
-        <input type='text' id="type" value={type} onChange={this.changeHandler} placeholder='type' />
+        <input type='text' id="body" value={body} onChange={this.changeHandler} placeholder='body' />
+        <input type='text' id="priority_id" value={priority_id} onChange={this.changeHandler} placeholder="priority" />
+        <input type="text" id="created_by" value={created_by} onChange={this.changeHandler} placeholder="created by" />
         <button onClick={this.addNewCard}> Make New Card</button>
       </div>
     )

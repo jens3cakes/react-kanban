@@ -5,8 +5,9 @@ const Card = require('../db/Models/Card')
 
 router.route('/')
   .get((req, res) => {
-    console.log('routes',Card)
-    return Card.fetchAll()
+    return Card.fetchAll({
+      withRelated:['status', 'priority', 'creator', 'assignee']
+    })
       .then(cards => {
         return res.json(cards);
       })
@@ -18,12 +19,15 @@ router.route('/')
   .post((req, res) => {
     console.log('this is the req',req.body)
 
-    const { name, task, status, type } = req.body;
+    const { assigned_to, task, status_id, created_by, body, priority_id } = req.body;
     return new Card({
-      name,
-      task,
-      status,
-      type
+      assigned_to:assigned_to,
+      title:task,
+      status_id:status_id,
+      created_by:created_by,
+      body:body,
+      priority_id:priority_id
+
     })
 .save()
 .then(book => {
