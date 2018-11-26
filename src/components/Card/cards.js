@@ -1,5 +1,5 @@
 import React from 'react';
-import EditCard from '../EditCard/index'
+import EditCard from '../EditCard'
 
 const Card = (props) => {
   console.log('card.js', props)
@@ -15,10 +15,11 @@ const Card = (props) => {
         {title}<br />
         {body}<br />
         {created_by}< br />
+        {/* <button onClick={this.editCard}>Edit Card</button> */}
+     <EditCard/>
       </div>
     </div>
   )
-};
+}
 
-
-export default Card;
+ export default Card;

@@ -1,22 +1,22 @@
-import {LOAD_CARDS, ADD_CARD, EDIT_CARD} from '../cardAction/action';
+import { LOAD_CARDS, ADD_CARD, EDIT_CARD } from '../cardAction/action';
 //import AddCard from '../components/AddCard';
 
 const initialState = [];
 
 const reducer = (state = initialState, action) => {
-  switch (action.type){
+  switch (action.type) {
     case LOAD_CARDS:
-    console.log('reducer',action.cards)
-    state = [...action.cards];
-    return state;
+      console.log('reducer', action.cards)
+      state = [...action.cards];
+      return state;
     case ADD_CARD:
-    console.log('add', action.cards)
-    return [...state, action.cards];
+      console.log('add', action.cards)
+      return state = [...state, action.cards];
     case EDIT_CARD:
-    console.log('edit', action.cards)
-    return state = [...state, action.cards]
+      console.log('edit', action.cards)
+      return state = [...state, action.cards];
     default:
-    return state;
+      return state;
   }
 }
 export default reducer;

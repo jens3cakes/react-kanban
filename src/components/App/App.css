@@ -60,6 +60,8 @@ font-family: 'Open Sans Condensed', sans-serif;
 }
 
 div.card {
+  display: flex;
+  flex-flow: column wrap;
   margin-bottom: 5px;
   border: 2px solid black;
   width: 200px;

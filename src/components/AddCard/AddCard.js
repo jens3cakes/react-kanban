@@ -38,7 +38,7 @@ class AddCard extends Component {
     console.log('add', event)
     event.preventDefault();
     const data = {
-      status_id: this.state.status_id,
+      status_id: parseInt(this.state.status_id),
       assigned_to: this.state.assigned_to,
       task: this.state.title,
       body: this.state.body,
@@ -47,6 +47,15 @@ class AddCard extends Component {
     }
     console.log('add2', data)
     this.props.addCard(data)
+    this.setState({
+      status: "",
+      assigned_to: "",
+      task: "",
+      body: "",
+      priority_id: "",
+      created_by: ""
+    })
+
   }
 
   render() {

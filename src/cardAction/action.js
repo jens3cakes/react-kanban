@@ -30,17 +30,17 @@ export const addCard = (card)=>{
       console.log('resp',card)
       dispatch({
         type:ADD_CARD,
-        card
+        cards:card
       })
     })
 .catch(err => {console.log(err)})
   }
   }
   export const edittedCard = (card) => {
-    console.log('edit', card)
+    console.log('editaction', card)
     return dispatch => {
       return axios.put(API_CARDS_URL, card)
-      .then(response =>{
+      .then(response => {
         const card = response.data;
         console.log('respEdit', card)
         dispatch({
