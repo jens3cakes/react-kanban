@@ -5,39 +5,41 @@ import { edittedCard } from '../../cardAction/action'
 class EditCard extends Component {
   constructor(props) {
     super(props);
+    console.log('head', this.props.task)
+    const task = this.props.task;
     this.state = {
-      status_id: "",
-      assigned_to: "",
-      title: "",
-      body: "",
-      priority_id: "",
-      created_by: ""
+      id:task.id,
+      status_id: task.status_id,
+      assigned_to: task.assigned_to,
+      title: task.title,
+      body: task.body,
+      priority_id: task.priority_id,
+      created_by: task.created_by
     };
     this.changeHandler = this.changeHandler.bind(this);
     this.editCard = this.editCard.bind(this);
   }
   changeHandler(event) {
     console.log('changeHandler', event.target.value)
-const editFormField=[];
-console.log(editFormField)
+    //console.log(editFormField)
     switch (event.target.id) {
       case "assigned_to":
-        editFormField.push(this.setState({ assigned_to: event.target.value }));
+        this.setState({ assigned_to: parseInt(event.target.value)});
         break;
       case "task":
-        editFormField.push(this.setState({ title: event.target.value }));
+        this.setState({ title: event.target.value });
         break;
       case "status":
-        editFormField.push(this.setState({ status_id: event.target.value }));
+        this.setState({ status_id: parseInt(event.target.value) });
         break;
       case "body":
-       editFormField.push(this.setState({ body: event.target.value }));
-       break;
+        this.setState({ body: event.target.value });
+        break;
       case "created_by":
-        editFormField.push(this.setState({ created_by: event.target.value }));
+        this.setState({ created_by: parseInt(event.target.value) });
         break;
       case "priority_id":
-        editFormField.push(this.setState({ priority_id: event.target.value }));
+        this.setState({ priority_id: parseInt(event.target.value) });
         break;
       default:
         break;
@@ -47,55 +49,52 @@ console.log(editFormField)
     console.log('edit', event)
     event.preventDefault();
     const data = {
+      id: parseInt(this.state.id),
       status_id: parseInt(this.state.status_id),
       assigned_to: parseInt(this.state.assigned_to),
-      task: this.state.title,
+      title: this.state.title,
       body: this.state.body,
       priority_id: parseInt(this.state.priority_id),
       created_by: parseInt(this.state.created_by)
     }
     console.log('editActionsend', data)
     this.props.edittedCard(data);
-    // this.setState({
-    //   assigned_to: "",
-    //   task: "",
-    //   status: "",
-    //   body: "",
-    //   priority_id: "",
-    //   created_by: "",
-    // })
   }
+
+  
   render() {
-    console.log('render fail',this.state, this.props)
-    const { body, task, assigned_to, status, priority_id, created_by } = this.state;
+    console.log('render fail', this.state, this.props)
+    const task = this.state;
     return (
       <div className="edit-card-form">
-        <select id="assigned_to" onChange={this.changeHandler}>
-          <option type="text" className="assignedTo" value={1} >Jennifer</option>
-          <option type="text" className="assignedTo" value={2}>Bert</option>
-          <option type="text" className="assignedTo" value={3}>Lauren</option>
-          <option type="text" className="assignedTo" value={4}>Joshua</option>
-          <option type="text" className="assignedTo" value={5}>Mitchell</option>
+        <input hidden value={task.id} />
+        <br />
+        <select id="assigned_to" value={task.assigned_to} onChange={this.changeHandler}>
+          <option type="text" value={1} >Jennifer</option>
+          <option type="text" value={2}>Bert</option>
+          <option type="text" value={3}>Lauren</option>
+          <option type="text" value={4}>Joshua</option>
+          <option type="text" value={5}>Mitchell</option>
         </select>
-
-        <input type='text' id="task" value={task} onChange={this.changeHandler} placeholder="task" />
-
-        <select id='status' onChange={this.changeHandler}>
+        <br />
+        <input type='text' id="task" value={task.title} onChange={this.changeHandler} placeholder="task" />
+        <br />
+        <select id='status' value={task.status_id} onChange={this.changeHandler}>
           <option type='text' className="status" value={1} >In Queue</option>
           <option type='text' className="status" value={2} >In Progress</option>
           <option type='text' className="status" value={3} >Done</option>
         </select>
-
-        <input type='text' id='body' value={body} onChange={this.changeHandler} placeholder="body" />
-
-        <select id='priority_id' onChange={this.changeHandler}>
-          <option type='text' className='priority_id' value={1} >Low</option>
+        <br />
+        <input type='text' id='body' value={task.body} onChange={this.changeHandler} placeholder="body" />
+        <br />
+        <select id='priority_id' value={task.priority} onChange={this.changeHandler}>
+          <option type='text' className='priority_id' value={3} >Low</option>
           <option type='text' className='priority_id' value={2} >Medium</option>
-          <option type='text' className='priority_id' value={3} >High</option>
-          <option type='text' className='priority_id' value={4} >Blocker</option>
+          <option type='text' className='priority_id' value={1} >High</option>
+          <option type='text' className='priority_id' value={0} >Blocker</option>
         </select>
-
-        <select id='created_by' onChange={this.changeHandler}>
+        <br />
+        <select id='created_by' value={task.creator} onChange={this.changeHandler}>
           <option type='text' className='created_by' value={1}>Jennifer</option>
           <option type='text' className='created_by' value={2}>Bert</option>
         </select>

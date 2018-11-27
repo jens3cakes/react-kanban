@@ -30,7 +30,7 @@ router.route('/')
     })
     .save()
       .then(card => {
-        console.log('add new card fetch',card)
+        //console.log('add new card fetch',card)
         return card.refresh({ withRelated: ['priority', 'status', 'assignee', 'creator'] })
       })
       .then(card => {
@@ -42,7 +42,7 @@ router.route('/')
   })
 
   .put((req, res) => {
-    // console.log('this is the put req', req.body)
+    console.log('this is the put req', req.body)
     const { id, assigned_to, title, status_id, created_by, body, priority_id } = req.body;
     let parsePId = parseInt(priority_id);//
     let parseStatId = parseInt(status_id);

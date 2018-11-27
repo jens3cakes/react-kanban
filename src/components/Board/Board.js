@@ -1,6 +1,8 @@
 import React from 'react';
 import Column from '../Column/'
 import { IN_PROGRESS, IN_QUEUE, DONE } from '../constants';
+import { EDIT_CARD } from '../../cardAction/action';
+import EditCard from '../EditCard';
 
 
 

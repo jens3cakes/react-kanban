@@ -20,7 +20,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "dev": "DEBUG=* ./node_modules/.bin/nodemon ./server/index.js --watch ./server/ --verbose",
+    "dev": "DEBUG=* ./node_modules/.bin/nodemon ./server/index.js --watch ./server",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

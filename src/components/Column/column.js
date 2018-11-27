@@ -2,14 +2,14 @@ import React from 'react';
 import Card from '../Card'
 
 const Column = (props) => {
-  console.log('column',props)
+  //console.log('column',props)
   const { id, tasks } = props
   const cards = tasks.filter((task) => {
-    console.log('column task',task)
+    //console.log('column task',task)
      return task.status_id === id;
   }).map((task) => {
-    console.log('column map', task.assignee)
-    return <Card key={task.id} assigned_to={task.assignee.first_name} title={task.title} status_id={task.status.name} priority_id={task.priority.name} body={task.body} />
+    //console.log('column map', task)
+    return <Card task={task} />//key={task.id} assigned_to={task.assignee.first_name} title={task.title} status_id={task.status.name} priority_id={task.priority.name} body={task.body} />
   })
 
   return (
