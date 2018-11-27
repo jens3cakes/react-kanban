@@ -33,7 +33,7 @@
 
 div.columns{
   display: flex;
-  flex-wrap: inherit;
+  
   flex-direction: row;
   align-content: space-around;
   
@@ -69,4 +69,11 @@ div.card {
 }
 div.add-card-form{
   border: 2px solid black;
+}
+
+
+i{
+  width: 20px;
+  height:20px;
+  font-size:30px
 }

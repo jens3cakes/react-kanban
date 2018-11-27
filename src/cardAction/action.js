@@ -6,6 +6,7 @@ export const EDIT_CARD = 'EDIT_CARD';
 export const LOAD_PRIORITIES = 'LOAD_PRIORITIES';
 export const LOAD_USERS = 'LOAD_USERS';
 export const LOAD_STATUSES = "LOAD_STATUSES";
+export const DELETE_CARD = "DELETE_CARD"
 
 
 const API_CARDS_URL = 'api/cards';
@@ -105,3 +106,17 @@ export const addCard = (card)=>{
       .catch(err => {console.log(err)})
     }
   }
+export const deleteCardRemover = (card) =>{
+  return dispatch =>{
+    return axios.delete(API_CARDS_URL, card)
+    .then(response => {
+      const card = response.data;
+      dispatch({
+        type:DELETE_CARD,
+        card:card
+      })
+
+    })
+  }
+}
+  

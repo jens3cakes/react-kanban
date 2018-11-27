@@ -5,6 +5,7 @@ const Card = require('../db/Models/Card')
 
 router.route('/')
   .get((req, res) => {
+    console.log('route', req.body)
     return Card.fetchAll({
       withRelated: ['status', 'priority', 'creator', 'assignee']
     })
@@ -37,12 +38,12 @@ router.route('/')
         return res.json(card);
       })
       .catch(err => {
-        return res.status(400).send(`Not able to update`);
+        return res.status(400).send(`Not able to add card`);
       })
   })
 
   .put((req, res) => {
-    console.log('this is the put req', req.body)
+    //console.log('this is the put req', req.body)
     const { id, assigned_to, title, status_id, created_by, body, priority_id } = req.body;
     let parsePId = parseInt(priority_id);//
     let parseStatId = parseInt(status_id);
@@ -75,6 +76,9 @@ router.route('/')
             return res.status(400).json({ message: err.message, code: err.code })
           })
       })
+
+      
+
   })
 
 

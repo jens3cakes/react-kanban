@@ -1,26 +1,25 @@
 import React from 'react';
 import EditCard from '../EditCard'
+//import { connect } from 'react-redux';
+// import {deleteCard} from "../../cardAction/action"
 
 const Card = (props) => {
   console.log('card.js', props.task)
-  const {id,title, body, priority, status, creator, assignee } = props.task;
-  
+  const { title, body, priority, status, creator, assignee } = props.task;
+
   return (
-    <div>
-      <div className='card'>
-        <br />
-        <input hidden value={id}/><br />
-        {status.name}<br />
-        {priority.name}<br />
-        {assignee.first_name}<br />
-        {title}<br />
-        {body}<br />
-        {creator.name}< br />
-        {/* <button onClick={this.editCard}>Edit Card</button> */}
-     <EditCard task={props.task}/>
-      </div>
+    <div className='card'>
+      <br />
+      {status.name}<br />
+      {priority.name}<br />
+      {assignee.first_name}<br />
+      {title}<br />
+      {body}<br />
+      {creator.name}< br />
+      <EditCard task={props.task} />
     </div>
   )
 }
+ 
 
- export default Card;
+export default Card;

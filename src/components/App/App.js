@@ -8,6 +8,8 @@ import { users } from '../../cardAction/action'
 import {statuses} from '../../cardAction/action'
 import {priority} from '../../cardAction/action'
 import {edittedCard} from '../../cardAction/action'
+import Card from '../Card/cards'
+import EditCard from '../EditCard';
 // import EditCard from '../EditCard/index'
 // import axios from 'axios';
 // import Column from '../Column';
@@ -23,17 +25,14 @@ class App extends Component {
     this.props.users()
     this.props.statuses()
     this.props.priority()
-
-
   }
 
   render() {
-    //console.log('render', this.props)
+    console.log('render', this.props)
     return (
 
       <div className='App'>
         <Board tasks={this.props.cards} />
-        {/* <Column tasks={this.props.cards}/> */}
         <AddCard />
       </div>
 
@@ -50,6 +49,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadCards: () => {
+      console.log('load cards',dispatch)
       dispatch(loadCards())
     },
     users: () => {
@@ -75,14 +75,6 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-// axios.get('/api/cards')
-//   .then((res) => {
-  //     const cards = res.data
-  //   .catch((err) => {
-  //     console.log('err')
-  //   })
-
-  // }
 
 
 
